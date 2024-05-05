@@ -389,9 +389,9 @@ static char *do_seenstats(const char *nick)
   glob_totalnicks = count_seens();
   glob_totalbytes = gseen_expmem();
   if (nick != NULL) {
-    char output[512];
-    sprintf(output, "%s%s", SLPUBPREFIX, SLSEENSTATS);
-    sprintf(seenstats_reply, output, nick, glob_totalnicks, glob_totalbytes);
+    char output[100];
+    sprintf(output, "%s, %s", nick, SLSEENSTATS);
+    sprintf(seenstats_reply, output, glob_totalnicks, glob_totalbytes);
   } else {
     sprintf(seenstats_reply, SLSEENSTATS, glob_totalnicks, glob_totalbytes);
   }

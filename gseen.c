@@ -69,7 +69,7 @@ static char quiet_seen[121];
 static char quiet_ai_seen[121];
 static char no_log[121];
 static char ignore_words[1024];
-static char default_slang[21] = "eng";
+static char default_slang[21] = "english";
 static int gseen_numversion = MODULE_NUMVERSION;
 static int save_seens = 60;
 static int save_seens_temp = 1;
@@ -265,9 +265,9 @@ char *gseen_start(Function * global_funcs)
     return "You need the server module to use the gseen module.";
   if (!(channels_funcs = module_depend(MODULE_NAME, "channels", 1, 0)))
     return "You need the channels module to use the gseen module.";
-  if (!module_depend(MODULE_NAME, "eggdrop", 104, 0)) {
+  if (!module_depend(MODULE_NAME, "eggdrop", 109, 0)) {
     module_undepend(MODULE_NAME);
-    return "This module requires Eggdrop 1.4.0 or later.";
+    return "This module requires Eggdrop 1.9.0 or later.";
   }
   chanlangs = NULL;
   coreslangs = NULL;

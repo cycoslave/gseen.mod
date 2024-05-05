@@ -154,9 +154,7 @@ static int pub_seenstats(char *nick, char *host, char *hand,
         char *channel, char *text)
 {
   char *dest;
-#if EGG_IS_MIN_VER(10500)
   struct chanset_t *chan;
-#endif
 
   Context;
   if (seenflood())
@@ -168,20 +166,14 @@ static int pub_seenstats(char *nick, char *host, char *hand,
   glob_nick = nick;
   putlog(LOG_CMDS, "*", "<<%s>> !%s! seenstats", nick, hand);
   if (quietseen(channel)) {
-    set_prefix(SLNOTPREFIX);
     dprintf(DP_HELP, "NOTICE %s :%s%s\n", nick, reply_prefix, do_seenstats(NULL));
     return 0;
   }
-#if EGG_IS_MIN_VER(10500)
   chan = findchan_by_dname(channel);
   if (chan)
     dest = chan->name;
   else
     dest = channel;
-#else
-  dest = channel;
-#endif
-  //set_prefix(SLPUBPREFIX);
   dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", dest, reply_prefix, do_seenstats(nick));
   return 1;
 }
