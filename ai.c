@@ -27,10 +27,8 @@ static int quietaiseens(char *chan)
   while (b[0])
     if (!strcasecmp(chan, newsplit(&b)))
       return 1;
-#if EGG_IS_MIN_VER(10503)
   if (ngetudef("quietaiseens", chan))
     return 1;
-#endif
   return 0;
 }
 

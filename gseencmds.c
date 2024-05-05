@@ -48,10 +48,8 @@ static int nopub(char *chan)
   while (b[0])
     if (!strcasecmp(chan, newsplit(&b)))
       return 1;
-#if EGG_IS_MIN_VER(10503)
   if (ngetudef("nopubseens", chan))
     return 1;
-#endif
   return 0;
 }
 
@@ -66,10 +64,8 @@ static int quietseen(char *chan)
   while (b[0])
     if (!strcasecmp(chan, newsplit(&b)))
       return 1;
-#if EGG_IS_MIN_VER(10503)
   if (ngetudef("quietseens", chan))
     return 1;
-#endif
   return 0;
 }
 
@@ -100,7 +96,6 @@ static int cmd_seenstats(struct userrec *u, int idx, char *par)
   reset_global_vars();
   glob_slang = slang_find(coreslangs, default_slang);
   glob_nick = dcc[idx].nick;
-  //set_prefix(SLDCCPREFIX);
   putlog(LOG_CMDS, "*", "#%s# seenstats", dcc[idx].nick);
   dprintf(idx, "%s%s\n", reply_prefix, do_seenstats(NULL));
   return 0;
@@ -118,9 +113,7 @@ static int pub_seen(char *nick, char *host, char *hand,
         char *channel, char *text)
 {
   char *dest;
-#if EGG_IS_MIN_VER(10500)
   struct chanset_t *chan;
-#endif
 
   Context;
   if (seenflood() || nopub(channel))
@@ -135,15 +128,11 @@ static int pub_seen(char *nick, char *host, char *hand,
            do_seen(newsplit(&text), nick, host, channel, botnet_seen));
     return 0;
   }
-#if EGG_IS_MIN_VER(10500)
   chan = findchan_by_dname(channel);
   if (chan)
     dest = chan->name;
   else
     dest = channel;
-#else
-  dest = channel;
-#endif
   set_prefix(SLPUBPREFIX);
   dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", dest, reply_prefix,
   	  do_seen(newsplit(&text), nick, host, channel, botnet_seen));
@@ -198,9 +187,7 @@ static int pub_seennick(char *nick, char *host, char *hand,
 {
   seendat *l;
   char *dest;
-#if EGG_IS_MIN_VER(10500)
   struct chanset_t *chan;
-#endif
 
   Context;
   if (seenflood())
@@ -211,15 +198,12 @@ static int pub_seennick(char *nick, char *host, char *hand,
   reset_global_vars();
   glob_slang = slang_find(coreslangs, slang_chanlang_get(chanlangs, channel));
   glob_nick = nick;
-#if EGG_IS_MIN_VER(10500)
   chan = findchan_by_dname(channel);
   if (chan)
     dest = chan->name;
   else
     dest = channel;
-#else
-  dest = channel;
-#endif
+
   text = newsplit(&text);
   l = findseen(text);
   if (!l) {

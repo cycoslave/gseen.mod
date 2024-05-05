@@ -77,32 +77,19 @@ static char *do_seen(char *mask, char *nick, char *uhost, char *chan, int bns)
       return SLHANDONCHAN;
     // check if it is on any other channel
     if ((ch = onanychan(mask))) {
-#if EGG_IS_MIN_VER(10500)
       if (!secretchan(ch->dname)) {
-	glob_otherchan = ch->dname;
+	    glob_otherchan = ch->dname;
         return SLONOTHERCHAN;
       }
-#else
-      if (!secretchan(ch->name)) {
-	glob_otherchan = ch->name;
-        return SLONOTHERCHAN;
-      }
-#endif
+
     }
     // check if the user who uses this handle is on the channel under
     // a different nick
     if ((ch = handonanychan(mask))) {
-#if EGG_IS_MIN_VER(10500)
       if (!secretchan(ch->dname)) {
         glob_otherchan = ch->dname;
         return SLONOTHERCHAN;
       }
-#else
-      if (!secretchan(ch->name)) {
-        glob_otherchan = ch->name;
-        return SLONOTHERCHAN;
-      }
-#endif
     }
     add_seenreq(mask, nick, uhost, chan, now);
     wild = 0;

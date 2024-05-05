@@ -55,10 +55,8 @@ static int nolog(char *chan)
   while (b[0])
     if (!strcasecmp(chan, newsplit(&b)))
       return 1;
-#if EGG_IS_MIN_VER(10503)
   if (ngetudef("noseendata", chan))
     return 1;
-#endif
   return 0;
 }
 
@@ -132,7 +130,6 @@ static int gseen_nick(char *nick, char *uhost, char *hand, char *chan,
   return 0;
 }
 
-#if EGG_IS_MIN_VER(10502)
 static int gseen_part(char *nick, char *uhost, char *hand, char *chan,
 		       char *reason)
 {
@@ -148,22 +145,7 @@ static int gseen_part(char *nick, char *uhost, char *hand, char *chan,
   add_seen(SEEN_PART, nick, uhost, chan, reason, now, get_spent(nick, chan));
   return 0;
 }
-#else
-static int gseen_part(char *nick, char *uhost, char *hand, char *chan)
-{
-  char buf[10] = "[secret]";
 
-  Context;
-  if (nolog(chan))
-    return 0;
-  if (use_handles && (hand[0] != '*'))
-    nick = hand;
-  if (secretchan(chan))
-    chan = buf;
-  add_seen(SEEN_PART, nick, uhost, chan, "", now, get_spent(nick, chan));
-  return 0;
-}
-#endif
 
 static int gseen_sign(char *nick, char *uhost, char *hand, char *chan,
 		       char *reason)

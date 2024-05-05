@@ -310,12 +310,10 @@ char *gseen_start(Function * global_funcs)
   read_seens();
   add_hook(HOOK_MINUTELY, (Function) gseen_minutely);
   add_hook(HOOK_DAILY, (Function) gseen_daily);
-#if EGG_IS_MIN_VER(10503)
   initudef(1, "noseendata", 1);
   initudef(1, "quietseens", 1);
   initudef(1, "quietaiseens", 1);
   initudef(1, "nopubseens", 1);
-#endif
   glob_slang_cmd_list = slang_commands_list_add(glob_slang_cmd_list, slang_text_gseen_command_table);
   putlog(LOG_MISC, "*", "gseen.mod v%s loaded.", MODULE_VERSION);
   return NULL;

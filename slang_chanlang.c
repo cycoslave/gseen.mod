@@ -104,10 +104,6 @@ static struct slang_header *slang_getbynick(struct slang_header *where, char *ni
 
   for (chan = chanset; chan; chan = chan->next)
     if (ismember(chan, nick))
-#if EGG_IS_MIN_VER(10500)
       return slang_find(where, slang_chanlang_get(chanlangs, chan->dname));
-#else
-      return slang_find(where, slang_chanlang_get(chanlangs, chan->name));
-#endif
   return slang_find(where, default_slang);
 }
