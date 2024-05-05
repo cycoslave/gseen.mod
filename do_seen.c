@@ -384,11 +384,17 @@ static gseenres *findseens(char *mask, int *ret, int fuzzy)
 
 
 char seenstats_reply[512];
-static char *do_seenstats()
+static char *do_seenstats(const char *nick)
 {
   glob_totalnicks = count_seens();
   glob_totalbytes = gseen_expmem();
-  sprintf(seenstats_reply, SLSEENSTATS, glob_totalnicks, glob_totalbytes);
+  if (nick != NULL) {
+    char output[512];
+    sprintf(output, "%s%s", SLPUBPREFIX, SLSEENSTATS);
+    sprintf(seenstats_reply, output, nick, glob_totalnicks, glob_totalbytes);
+  } else {
+    sprintf(seenstats_reply, SLSEENSTATS, glob_totalnicks, glob_totalbytes);
+  }
   return seenstats_reply;
 }
 

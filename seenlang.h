@@ -16,10 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#define SLPUBPREFIX	get_language(0xc010)
-#define SLNOTPREFIX	get_language(0xc011)
-#define SLMSGPREFIX	get_language(0xc012)
-#define SLDCCPREFIX	get_language(0xc013)
+#define SLPUBPREFIX	get_language(0xc030)
+#define SLNOTPREFIX	get_language(0xc031)
+#define SLMSGPREFIX	get_language(0xc032)
+#define SLDCCPREFIX	get_language(0xc033)
 
 #define SLNOPARAM       get_language(0xc054)
 #define SLMIRROR        get_language(0xc055)

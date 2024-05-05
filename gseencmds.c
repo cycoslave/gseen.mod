@@ -100,9 +100,9 @@ static int cmd_seenstats(struct userrec *u, int idx, char *par)
   reset_global_vars();
   glob_slang = slang_find(coreslangs, default_slang);
   glob_nick = dcc[idx].nick;
-  set_prefix(SLDCCPREFIX);
+  //set_prefix(SLDCCPREFIX);
   putlog(LOG_CMDS, "*", "#%s# seenstats", dcc[idx].nick);
-  dprintf(idx, "%s%s\n", reply_prefix, do_seenstats());
+  dprintf(idx, "%s%s\n", reply_prefix, do_seenstats(NULL));
   return 0;
 }
 
@@ -169,7 +169,7 @@ static int pub_seenstats(char *nick, char *host, char *hand,
   putlog(LOG_CMDS, "*", "<<%s>> !%s! seenstats", nick, hand);
   if (quietseen(channel)) {
     set_prefix(SLNOTPREFIX);
-    dprintf(DP_HELP, "NOTICE %s :%s%s\n", nick, reply_prefix, do_seenstats());
+    dprintf(DP_HELP, "NOTICE %s :%s%s\n", nick, reply_prefix, do_seenstats(NULL));
     return 0;
   }
 #if EGG_IS_MIN_VER(10500)
@@ -181,8 +181,8 @@ static int pub_seenstats(char *nick, char *host, char *hand,
 #else
   dest = channel;
 #endif
-  set_prefix(SLPUBPREFIX);
-  dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", dest, reply_prefix, do_seenstats());
+  //set_prefix(SLPUBPREFIX);
+  dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", dest, reply_prefix, do_seenstats(nick));
   return 1;
 }
 

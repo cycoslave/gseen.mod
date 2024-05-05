@@ -60,13 +60,13 @@
 # but you can also define prefixes for other requests.
 
 # for replies in the channel:
-0xc010,%s, 
+0xc030,%s, 
 # for replies via notice:
-0xc011,
+0xc031,
 # for replies via PRIVMSG
-0xc012,
+0xc032,
 # for replies on the partyline
-0xc013,
+0xc033,
 
 #
 ## error messages
