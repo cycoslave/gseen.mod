@@ -388,7 +388,7 @@ static char *do_seenstats()
 {
   glob_totalnicks = count_seens();
   glob_totalbytes = gseen_expmem();
-  sprintf(seenstats_reply, "%s", SLSEENSTATS);
+  sprintf(seenstats_reply, SLSEENSTATS, glob_totalnicks, glob_totalbytes);
   return seenstats_reply;
 }
 

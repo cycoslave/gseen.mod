@@ -18,8 +18,8 @@
 
 #define MAKING_GSEEN
 #define MODULE_NAME "gseen"
-#define MODULE_VERSION "1.3.0"
-#define MODULE_NUMVERSION 10300
+#define MODULE_VERSION "1.3.1"
+#define MODULE_NUMVERSION 10301
 #include "../module.h"
 #include "../irc.mod/irc.h"
 #include "../server.mod/server.h"
@@ -32,11 +32,11 @@
 static Function *global = NULL, *irc_funcs = NULL, *server_funcs = NULL, *channels_funcs = NULL;
 
 #ifndef EGG_IS_MIN_VER
-#define EGG_IS_MIN_VER(ver)             ((ver) <= 10400)
+#define EGG_IS_MIN_VER(ver)             ((ver) <= 1090502)
 #endif
 
 #ifndef EGG_IS_MAX_VER
-#define EGG_IS_MAX_VER(ver)		((ver) >= 10400)
+#define EGG_IS_MAX_VER(ver)		((ver) >= 1090502)
 #endif
 
 #ifndef Context

@@ -1,0 +1,146 @@
+#####################################################################
+#
+# Default English langfile for GSeen.Mod v1.1.0
+#
+# Just edit the text below to fit your needs. You can add or remove
+# any tag just like you want, they do not need to appear in a special
+# order (or number).
+#
+# If you enter more than one line per ID, then a random one will be
+# chosen for each reply. (this does not work for the time strings)
+#
+# If you think you need more tags, just email me and maybe I'll add
+# them in the next release.
+#
+# A complete list of available Tags can be found at the end of the
+# file slang_gseen_commands.c (unfortunately, it does not contain any
+# descriptions for the tags)
+#
+#####################################################################
+
+#
+## time string
+#
+# each time string in singular and plural
+#
+#D 0 year
+#D 1 years
+#D 2 week
+#D 3 weeks
+#D 4 day
+#D 5 days
+#D 6 hour
+#D 7 hours
+#D 8 minute
+#D 9 minutes
+#D 10 second
+#D 11 seconds
+# if an invalid time value was supplied, output the following string
+#D 12 some time
+
+0xcA00,year
+0xcA01,years
+0xcA02,week
+0xcA03,weeks
+0xcA04,day
+0xcA05,days
+0xcA06,hour
+0xcA07,hours
+0xcA08,minute
+0xcA09,minutes
+0xcA10,second
+0xcA11,seconds
+0xcA12,some time
+
+#
+## Prefixes
+#
+# These are the prefixes of the replies. By default, there's only
+# a prefix for public requests (so you know for whom the answer is),
+# but you can also define prefixes for other requests.
+
+# for replies in the channel:
+0xc010,%s, 
+# for replies via notice:
+0xc011,
+# for replies via PRIVMSG
+0xc012,
+# for replies on the partyline
+0xc013,
+
+#
+## error messages
+#
+0xc054,do you know what a parameter is?
+0xc054,don't you think it would be more reasonable to say for whom you are searching?
+0xc042,.
+0xc055,do I look like a mirror? ^_^
+0xc055,mirror mirror on the wall...
+0xc055,do you have a split personality? *eg*
+0xc056,if you can't see %s here right now, you probably need new glasses. ^_^
+0xc056,please look a bit closer at the memberlist of this channel.
+0xc057,I'm sorry, but wildcards ('?' or '*') are not allowed in a search.
+0xc058,Hum... don't you think this nick is a bit long? ^_^
+0xc058,you know that the length of nicks is limited, don't you?
+
+#
+## no result
+#
+0xc065,I don't remember seeing %s.
+0xc065,%s? hmm... I'm trying to remember... maybe... I'm not sure... no. I don't remember %s.
+0xc066,I haven't seen %s for %s.
+0xc067,I found no matches to your query.
+0xc067,I'm sorry, but your search didn't return any results.
+0xc068,Ouch, your search returned way too many matches. Please refine it.
+
+#
+## victim is online
+#
+0xc073,%s is %s, who is on this channel right now.
+0xc074,%s is on %s right now.
+
+#
+## results found
+#
+0xc075,I found one match to your query:
+0xc076,I found %d matches to your query:
+0xc077,I found %d matches to your query. These are the 5 most recent ones:
+
+#
+## results found by another bot in the botnet
+#
+0xc085,%s says: 
+
+
+#
+## the core info
+#
+0xc101,%s (<?shost/?>) was last seen joining <?schan/?> <?swhen/?> ago (<?stime/?>). <?snick/?> is still there.
+0xc121,<?snick/?> (<?shost/?>) was last seen joining <?schan/?> <?swhen/?> ago (<?stime/?>), but <?snick/?> mysteriously dematerialized.
+0xc102,<?snick/?> (<?shost/?>) was last seen parting <?schan/?> <?swhen/?> ago (<?stime/?>), after spending <?spent/?> there.
+0xc103,<?snick/?> (<?shost/?>) was last seen quitting <?schan/?> <?swhen/?> ago (<?stime/?>) stating "<?smsg/?>" after spending <?spent/?> there.
+0xc104,<?snick/?> (<?shost/?>) was last seen changing his/her nick to <?snick2/?> on <?schan/?> <?swhen/?> ago (<?stime/?>). <?snick2/?> is still there.
+0xc124,<?snick/?> (<?shost/?>) was last seen changing his/her nick to <?snick2/?> on <?schan/?> <?swhen/?> ago (<?stime/?>), but <?snick2/?> mysteriously dematerialized.
+0xc105,<?snick/?> (<?shost/?>) was last seen changing his/her nick from <?snick2/?> on <?schan/?> <?swhen/?> ago (<?stime/?>). <?snick/?> is still there.
+0xc125,<?snick/?> (<?shost/?>) was last seen changing his/her nick from <?snick2/?> on <?schan/?> <?swhen/?> ago (<?stime/?>), but <?snick/?> mysteriously dematerialized.
+0xc106,<?snick/?> (<?shost/?>) was last seen being kicked from <?schan/?> by <?punisher/?> (<?kickreason/?>) <?swhen/?> ago (<?stime/?>), after spending <?spent/?> there.
+0xc107,<?snick/?> (<?shost/?>) was last seen splitting from <?schan/?> <?swhen/?> ago (<?stime/?>), after spending <?spent/?> there.
+0xc108,<?snick/?> (<?shost/?>) was last seen rejoining <?schan/?> from a netsplit <?swhen/?> ago (<?stime/?>) <?snick/?> is still there.
+0xc128,<?snick/?> (<?shost/?>) was last seen rejoining <?schan/?> from a netsplit <?swhen/?> ago (<?stime/?>), but the god of netsplits didn't let him escape, so he's not here now.
+0xc109,<?snick/?> was last seen joining the botnet channel <?schan/?> on <?bnbot/?> <?swhen/?> ago (<?stime/?>).
+0xc129,<?snick/?> was last seen joining the partyline on <?bnbot/?> <?swhen/?> ago (<?stime/?>).
+0xc110,<?snick/?> was last seen leaving the botnet channel <?schan/?> from <?bnbot/?> <?swhen/?> ago (<?stime/?>).
+0xc130,<?snick/?> was last seen leaving the partyline from <?bnbot/?> <?swhen/?> ago (<?stime/?>).
+0xc140,<?snick/?> (<?shost/?>) was last seen on <?schan/?> <?swhen/?> ago (<?stime/?>).
+
+#
+## seen notification
+#
+0xc170,<?rnick/?> (<?rhost/?>) was looking for you on <?rchan/?> <?rwhen/?> ago (<?rtime/?>).
+0xc171,There have been <?requests/?> users looking for you:
+0xc172,The last one was <?rnick/?> (<?rhost/?>) on <?rchan/?> <?rwhen/?> ago (<?rtime/?>).
+
+#
+## seen stats
+#
+0xc180,I'm currently tracking %d nicks using %d bytes.
