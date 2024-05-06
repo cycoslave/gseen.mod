@@ -233,7 +233,7 @@ static char *getslang(int id)
   return text;
 }
 
-static char *getdur(int idx)
+/*static char *getdur(int idx)
 {
   char *text;
 
@@ -248,7 +248,7 @@ static char *getdur(int idx)
     return getslang_error;
   }
   return text;
-}
+}*/
 
 #ifndef SLANG_NOTYPES
 static char *getslangtype(char *type)

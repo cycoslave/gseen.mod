@@ -132,8 +132,10 @@ static char *slang_text_get(struct slang_text *item)
 {
   slang_text_buf[0] = 0;
   while (item) {
-    if (item->string)
-      strncat(slang_text_buf, item->string, sizeof(slang_text_buf));
+    if (item->string) {
+      size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+      strncat(slang_text_buf, item->string, remaining_space);
+    }
     else if (item->command)
       item->command();
     item = item->next;

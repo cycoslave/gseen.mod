@@ -68,7 +68,7 @@ static void slang_duration_free(struct slang_duration *what)
   }
 }
 
-static char *slang_duration_get(struct slang_duration *where, int idx)
+/*static char *slang_duration_get(struct slang_duration *where, int idx)
 {
   if (!where) {
     debug0("no where");
@@ -79,4 +79,4 @@ static char *slang_duration_get(struct slang_duration *where, int idx)
     return NULL;
   }
   return where->durs[idx];
-}
+}*/
