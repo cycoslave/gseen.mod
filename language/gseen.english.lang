@@ -71,26 +71,26 @@
 #
 ## error messages
 #
-0xc054,do you know what a parameter is?
+#0xc054,do you know what a parameter is?
 0xc054,don't you think it would be more reasonable to say for whom you are searching?
 0xc042,.
 0xc055,do I look like a mirror? ^_^
-0xc055,mirror mirror on the wall...
-0xc055,do you have a split personality? *eg*
+#0xc055,mirror mirror on the wall...
+#0xc055,do you have a split personality? *eg*
 0xc056,if you can't see %s here right now, you probably need new glasses. ^_^
-0xc056,please look a bit closer at the memberlist of this channel.
+#0xc056,please look a bit closer at the memberlist of this channel.
 0xc057,I'm sorry, but wildcards ('?' or '*') are not allowed in a search.
-0xc058,Hum... don't you think this nick is a bit long? ^_^
+#0xc058,Hum... don't you think this nick is a bit long? ^_^
 0xc058,you know that the length of nicks is limited, don't you?
 
 #
 ## no result
 #
 0xc065,I don't remember seeing %s.
-0xc065,%s? hmm... I'm trying to remember... maybe... I'm not sure... no. I don't remember %s.
+#0xc065,Hmm... I'm trying to remember... maybe... I'm not sure... no. I don't remember %s.
 0xc066,I haven't seen %s for %s.
 0xc067,I found no matches to your query.
-0xc067,I'm sorry, but your search didn't return any results.
+#0xc067,I'm sorry, but your search didn't return any results.
 0xc068,Ouch, your search returned way too many matches. Please refine it.
 
 #

@@ -79,7 +79,7 @@ static int onchan(char *, char *);
 static char *handonchan(char *, char *);
 static struct chanset_t *onanychan(char *);
 static struct chanset_t *handonanychan(char *);
-static char *do_seenstats(const char *);
+static char *do_seenstats();
 static void add_seenreq(char *, char *, char *, char *, time_t);
 static int expmem_seenreq();
 static void free_seenreq();

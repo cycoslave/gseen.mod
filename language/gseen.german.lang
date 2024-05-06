@@ -63,9 +63,9 @@
 ## Fehlermeldungen
 #
 0xc054,wei�t Du was ein Parameter ist? ^_^
-0xc054,ich w�rde Dir ja gerne helfen, aber solange Du nicht sagst, nach wem Du suchst, kann ich nicht viel tun.
-0xc054,meinst Du nicht, es w�re geschickter zu sagen, nach wem Du �berhaupt suchst?
-0xc054,42.
+#0xc054,ich w�rde Dir ja gerne helfen, aber solange Du nicht sagst, nach wem Du suchst, kann ich nicht viel tun.
+#0xc054,meinst Du nicht, es w�re geschickter zu sagen, nach wem Du �berhaupt suchst?
+#0xc054,42.
 0xc055,sehe ich etwa wie ein Spiegel aus? ^_^
 0xc055,Spieglein, Spieglein an der Wand...
 0xc055,leidest Du etwa unter multiplen Pers�nlichkeiten? *eg*
@@ -78,10 +78,10 @@
 #
 ## Kein Ergebnis
 #
-0xc065,Ich kann mich nicht daran erinnern, <?query/?> gesehen zu haben...
-0xc065,<?query/?>? Hmm... ich bin mir nicht sicher... vielleicht... eventuell... nein, kenne ich nicht.
-0xc065,der Name sagt mir nichts. Hast Du Dich vielleicht vertippt?
-0xc066,Ich hab' <?query/?> seit <?laston/?> nicht mehr gesehen.
+0xc065,Ich kann mich nicht daran erinnern, %s gesehen zu haben...
+0xc065,%s? Hmm... ich bin mir nicht sicher... vielleicht... eventuell... nein, kenne ich nicht.
+0xc065,der %s sagt mir nichts. Hast Du Dich vielleicht vertippt?
+0xc066,Ich hab' %s seit %s nicht mehr gesehen.
 0xc067,Sorry, aber zu deiner Anfrage passt nichts in meiner Datenbank :(
 0xc068,Autschi, das gab viel zu viele Ergebnisse. Bitte formuliere deine Suche etwas genauer.
 

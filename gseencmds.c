@@ -97,7 +97,7 @@ static int cmd_seenstats(struct userrec *u, int idx, char *par)
   glob_slang = slang_find(coreslangs, default_slang);
   glob_nick = dcc[idx].nick;
   putlog(LOG_CMDS, "*", "#%s# seenstats", dcc[idx].nick);
-  dprintf(idx, "%s%s\n", reply_prefix, do_seenstats(NULL));
+  dprintf(idx, "%s%s\n", reply_prefix, do_seenstats());
   return 0;
 }
 
@@ -123,8 +123,7 @@ static int pub_seen(char *nick, char *host, char *hand,
   glob_nick = nick;
   putlog(LOG_CMDS, "*", "<<%s>> !%s! seen %s", nick, hand, text);
   if (quietseen(channel)) {
-    set_prefix(SLNOTPREFIX);
-    dprintf(DP_HELP, "NOTICE %s :%s%s\n", nick, reply_prefix,
+    dprintf(DP_HELP, "NOTICE %s :%s, %s\n", nick, nick,
            do_seen(newsplit(&text), nick, host, channel, botnet_seen));
     return 0;
   }
@@ -133,8 +132,7 @@ static int pub_seen(char *nick, char *host, char *hand,
     dest = chan->name;
   else
     dest = channel;
-  set_prefix(SLPUBPREFIX);
-  dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", dest, reply_prefix,
+  dprintf(DP_HELP, "PRIVMSG %s :%s, %s\n", dest, nick,
   	  do_seen(newsplit(&text), nick, host, channel, botnet_seen));
   return 0;
 }
@@ -155,7 +153,7 @@ static int pub_seenstats(char *nick, char *host, char *hand,
   glob_nick = nick;
   putlog(LOG_CMDS, "*", "<<%s>> !%s! seenstats", nick, hand);
   if (quietseen(channel)) {
-    dprintf(DP_HELP, "NOTICE %s :%s%s\n", nick, reply_prefix, do_seenstats(NULL));
+    dprintf(DP_HELP, "NOTICE %s :%s, %s\n", nick, nick, do_seenstats());
     return 0;
   }
   chan = findchan_by_dname(channel);
@@ -163,7 +161,7 @@ static int pub_seenstats(char *nick, char *host, char *hand,
     dest = chan->name;
   else
     dest = channel;
-  dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", dest, reply_prefix, do_seenstats(nick));
+  dprintf(DP_HELP, "PRIVMSG %s :%s, %s\n", dest, nick, do_seenstats());
   return 1;
 }
 
@@ -209,20 +207,24 @@ static int pub_seennick(char *nick, char *host, char *hand,
   if (!l) {
     glob_query = text;
     if (quietseen(channel)) {
-      set_prefix(SLNOTPREFIX);
-      dprintf(DP_HELP, "NOTICE %s :%s%s\n", nick, reply_prefix, SLNOTSEEN);
+      char output[100];
+      sprintf(output, "NOTICE %s :%s, %s\n", nick, nick, SLNOTSEEN);
+      dprintf(DP_HELP, output, text);
     } else {
-      set_prefix(SLPUBPREFIX);
-      dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", dest, reply_prefix, SLNOTSEEN);
+      char output[100];
+      sprintf(output, "PRIVMSG %s :%s, %s\n", dest, nick, SLNOTSEEN);
+      dprintf(DP_HELP, output, text);
     }
     return 0;
   }
   if (quietseen(channel)) {
-    set_prefix(SLNOTPREFIX);
-    dprintf(DP_HELP, "NOTICE %s :%s%s\n", nick, reply_prefix, do_seennick(l));
+    char output[100];
+    sprintf(output, "NOTICE %s :%s, %s\n", nick, nick, do_seennick(l));
+    dprintf(DP_HELP, output, nick, text);
   } else {
-    set_prefix(SLPUBPREFIX);
-    dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", dest, reply_prefix, do_seennick(l));
+    char output[100];
+    sprintf(output, "PRIVMSG %s :%s, %s\n", dest, nick, do_seennick(l));
+    dprintf(DP_HELP, output, nick, text);
   }
   return 0;
 }

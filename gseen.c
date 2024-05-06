@@ -31,14 +31,6 @@
 #undef global
 static Function *global = NULL, *irc_funcs = NULL, *server_funcs = NULL, *channels_funcs = NULL;
 
-#ifndef EGG_IS_MIN_VER
-#define EGG_IS_MIN_VER(ver)             ((ver) <= 1090502)
-#endif
-
-#ifndef EGG_IS_MAX_VER
-#define EGG_IS_MAX_VER(ver)		((ver) >= 1090502)
-#endif
-
 #ifndef Context
 #define Context context
 #endif

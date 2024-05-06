@@ -37,6 +37,7 @@ static char *do_seen(char *mask, char *nick, char *uhost, char *chan, int bns)
   struct userrec *u;
   struct laston_info *li;
   struct chanset_t *ch;
+  char slnotseeout[100];
 
   Context;
   start_seentime_calc();
@@ -71,15 +72,23 @@ static char *do_seen(char *mask, char *nick, char *uhost, char *chan, int bns)
       return SLMIRROR;
     }
     // check if the nick is on the current channel
-    if (onchan(mask, chan))
-      return SLONCHAN;
-    if ((glob_othernick = handonchan(mask, chan)))
-      return SLHANDONCHAN;
+    if (onchan(mask, chan)) {
+      char slonchanout[100];
+      sprintf(slonchanout, SLONCHAN, mask);
+      return strdup(slonchanout);
+    }
+    if ((glob_othernick = handonchan(mask, chan))) {
+      char slonchanout[100];
+      sprintf(slonchanout, SLHANDONCHAN, mask, glob_othernick);
+      return strdup(slonchanout);
+    }
     // check if it is on any other channel
     if ((ch = onanychan(mask))) {
       if (!secretchan(ch->dname)) {
-	    glob_otherchan = ch->dname;
-        return SLONOTHERCHAN;
+	      glob_otherchan = ch->dname;
+        char slonchanout[100];
+        sprintf(slonchanout, SLONOTHERCHAN, mask, ch->dname);
+        return strdup(slonchanout);
       }
 
     }
@@ -88,7 +97,9 @@ static char *do_seen(char *mask, char *nick, char *uhost, char *chan, int bns)
     if ((ch = handonanychan(mask))) {
       if (!secretchan(ch->dname)) {
         glob_otherchan = ch->dname;
-        return SLONOTHERCHAN;
+        char slonchanout[100];
+        sprintf(slonchanout, SLONOTHERCHAN, mask, ch->dname);
+        return strdup(slonchanout);
       }
     }
     add_seenreq(mask, nick, uhost, chan, now);
@@ -111,7 +122,8 @@ static char *do_seen(char *mask, char *nick, char *uhost, char *chan, int bns)
           end_seentime_calc(); // a botnet seen function, which needs a clear
           return NULL;         // NULL to detect if there was a result or not
         }
-        tmp = SLNOTSEEN;
+        sprintf(slnotseeout, SLNOTSEEN, mask);
+        tmp = strdup(slnotseeout);
         if (bns && ((strlen(mask) + strlen(nick) + strlen(uhost)
             + strlen(chan) + 20) < 255)) {
           debug0("trying botnet seen");
@@ -177,12 +189,16 @@ static char *do_seen(char *mask, char *nick, char *uhost, char *chan, int bns)
   if (strcasecmp(results->seen->nick, mask)) {
     // if the user's latest nick is not the nick for which we were searching,
     // say that there were multiple matches and display the latest one
-    if (numresults == 1)
+    char output[100];
+    if (numresults == 1) {
       tmp = SLONEMATCH;
-    else if (numresults <= 5)
-      tmp = SLLITTLEMATCHES;
-    else
-      tmp = SLMANYMATCHES;
+    } else if (numresults <= 5) {
+      sprintf(output, SLLITTLEMATCHES, numresults);
+      tmp = output;
+    } else {
+      sprintf(output, SLMANYMATCHES, numresults);
+      tmp = output;
+    }
     seen_reply = nmalloc(strlen(tmp) + 1);
     strcpy(seen_reply, tmp);
     nr = 0;
@@ -371,17 +387,11 @@ static gseenres *findseens(char *mask, int *ret, int fuzzy)
 
 
 char seenstats_reply[512];
-static char *do_seenstats(const char *nick)
+static char *do_seenstats()
 {
   glob_totalnicks = count_seens();
   glob_totalbytes = gseen_expmem();
-  if (nick != NULL) {
-    char output[100];
-    sprintf(output, "%s, %s", nick, SLSEENSTATS);
-    sprintf(seenstats_reply, output, glob_totalnicks, glob_totalbytes);
-  } else {
-    sprintf(seenstats_reply, SLSEENSTATS, glob_totalnicks, glob_totalbytes);
-  }
+  sprintf(seenstats_reply, SLSEENSTATS, glob_totalnicks, glob_totalbytes);
   return seenstats_reply;
 }
 
