@@ -215,7 +215,7 @@ static char *do_seen(char *mask, char *nick, char *uhost, char *chan, int bns)
     }
     tmp = do_seennick(results->seen);
     seen_reply = nrealloc(seen_reply, 2 + strlen(seen_reply) + strlen(tmp) + 1);
-    snprintf(seen_reply + strlen(seen_reply), sizeof(seen_reply) - strlen(seen_reply), ". %s", tmp);
+    sprintf(seen_reply, "%s. %s", seen_reply, tmp);
   } else { // first result is the nick which we were searching for
     // just return the info for this nick and don't care about other results
     tmp = do_seennick(results->seen);
@@ -786,11 +786,11 @@ static void report_seenreq(char *channel, char *nick)
         for (b = l->by; b; b = b->next) {
           nr++;
           reply = nrealloc(reply, strlen(reply) + ((nr == 1) ? 1 : 2) + strlen(b->who) + 1);
-          snprintf(reply + strlen(reply), sizeof(reply) - strlen(reply), "%s%s%s", (nr == 1) ? "" : " ", (nr == 1) ? "" : ",", b->who);
+          sprintf(reply, "%s%s%s", reply, (nr == 1) ? " " : ", ", b->who);
 	    }
         tmp = SLLASTLOOK;
         reply = nrealloc(reply, strlen(reply) + 2 + strlen(tmp) + 1);
-        snprintf(reply + strlen(reply), sizeof(reply) - strlen(reply), ". %s", tmp);
+        sprintf(reply, "%s. %s", reply, tmp);
 	    dprintf(DP_HELP, "NOTICE %s :%s\n", l->nick, reply);
         nfree(reply);
       }

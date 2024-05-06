@@ -2,14 +2,14 @@
 
 static void slang_send_botnick()
 {
-  size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+  size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
   strncat(slang_text_buf, botname, remaining_space);
 }
 
 static void slang_send_query()
 {
   if (glob_query) {
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, glob_query, remaining_space);
   }
 }
@@ -17,7 +17,7 @@ static void slang_send_query()
 static void slang_send_laston()
 {
   if (glob_laston) {
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, glob_laston, remaining_space);
   }
 }
@@ -25,7 +25,7 @@ static void slang_send_laston()
 static void slang_send_otherchan()
 {
   if (glob_otherchan) {
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, glob_otherchan, remaining_space);
   }
 }
@@ -33,7 +33,7 @@ static void slang_send_otherchan()
 static void slang_send_othernick()
 {
   if (glob_othernick) {
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, glob_othernick, remaining_space);
   }
 }
@@ -41,7 +41,7 @@ static void slang_send_othernick()
 static void slang_send_remotebot()
 {
   if (glob_remotebot) {
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, glob_remotebot, remaining_space);
   }
 }
@@ -49,7 +49,7 @@ static void slang_send_remotebot()
 static void slang_send_snick()
 {
   if (glob_seendat) {
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, glob_seendat->nick, remaining_space);
   }
 }
@@ -57,7 +57,7 @@ static void slang_send_snick()
 static void slang_send_shost()
 {
   if (glob_seendat) {
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, glob_seendat->host, remaining_space);
   }
 }
@@ -65,7 +65,7 @@ static void slang_send_shost()
 static void slang_send_schan()
 {
   if (glob_seendat) {
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, glob_seendat->chan, remaining_space);
   }
 }
@@ -76,7 +76,7 @@ static void slang_send_swhen()
 
   if (glob_seendat) {
     dur = gseen_duration(now - glob_seendat->when);
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, dur, remaining_space);
   }
 }
@@ -89,7 +89,7 @@ static void slang_send_stime()
   if (glob_seendat) {
     tt = glob_seendat->when;
     strftime(t, sizeof(t), "%d.%m.%Y %H:%M", localtime(&tt));
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, t, remaining_space);
   }
 }
@@ -100,7 +100,7 @@ static void slang_send_spent()
 
   if (glob_seendat) {
     dur = gseen_duration(glob_seendat->spent);
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, dur, remaining_space);
   }
 }
@@ -108,7 +108,7 @@ static void slang_send_spent()
 static void slang_send_smsg()
 {
   if (glob_seendat) {
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, glob_seendat->msg, remaining_space);
   }
 }
@@ -118,7 +118,7 @@ static void slang_send_numresults()
   char buf[7];
   
   snprintf(buf, sizeof(buf), "%d", numresults);
-  size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+  size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
   strncat(slang_text_buf, buf, remaining_space);
 }
 
@@ -130,7 +130,7 @@ static void slang_send_punisher()
   if (glob_seendat) {
     reason = strchr(glob_seendat->msg, ' ');
     if (!reason) {
-      size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+      size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
       strncat(slang_text_buf, glob_seendat->msg, remaining_space);
     } else {
       len = reason - glob_seendat->msg;
@@ -146,7 +146,7 @@ static void slang_send_kickreason()
   if (glob_seendat) {
     reason = strchr(glob_seendat->msg, ' ');
     if (reason) {
-      size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+      size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
       strncat(slang_text_buf, reason, remaining_space);
     }
   }
@@ -157,7 +157,7 @@ static void slang_send_rnick()
   if (glob_seenrequest) {
     Assert(glob_seenrequest->by);
     Assert(glob_seenrequest->by->who);
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, glob_seenrequest->by->who, remaining_space);
   }
 }
@@ -167,7 +167,7 @@ static void slang_send_rchan()
   if (glob_seenrequest) {
     Assert(glob_seenrequest->by);
     Assert(glob_seenrequest->by->chan);
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, glob_seenrequest->by->chan, remaining_space);
   }
 }
@@ -177,7 +177,7 @@ static void slang_send_rhost()
   if (glob_seenrequest) {
     Assert(glob_seenrequest->by);
     Assert(glob_seenrequest->by->host);
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, glob_seenrequest->by->host, remaining_space);
   }
 }
@@ -191,7 +191,7 @@ static void slang_send_rtime()
     Assert(glob_seenrequest->by);
     tt = glob_seenrequest->by->when;
     strftime(t, sizeof(t), "%d.%m.%Y %H:%M", localtime(&tt));
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, t, remaining_space);
   }
 }
@@ -200,7 +200,7 @@ static void slang_send_rwhen()
 {
   if (glob_seenrequest) {
     Assert(glob_seenrequest->by);
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, gseen_duration(now - glob_seenrequest->by->when), remaining_space);
   }
 }
@@ -210,7 +210,7 @@ static void slang_send_requests()
   char buf[7];
   
   snprintf(buf, sizeof(buf), "%d", glob_seenrequests);
-  size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+  size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
   strncat(slang_text_buf, buf, remaining_space);
 }
 
@@ -219,7 +219,7 @@ static void slang_send_totalnicks()
   char buf[7];
   
   snprintf(buf, sizeof(buf), "%d", glob_totalnicks);
-  size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+  size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
   strncat(slang_text_buf, buf, remaining_space);
 }
 
@@ -228,14 +228,14 @@ static void slang_send_totalbytes()
   char buf[20];
   
   snprintf(buf, sizeof(buf), "%d", glob_totalbytes);
-  size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+  size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
   strncat(slang_text_buf, buf, remaining_space);
 }
 
 static void slang_send_nick()
 {
   if (glob_nick) {
-    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf) - 1;
+    size_t remaining_space = sizeof(slang_text_buf) - strlen(slang_text_buf);
     strncat(slang_text_buf, glob_nick, remaining_space);
   }
 }
