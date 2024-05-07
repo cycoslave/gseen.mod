@@ -136,9 +136,9 @@
 #
 ## seen notification
 #
-0xc170,<?rnick/?> (<?rhost/?>) was looking for you on <?rchan/?> <?rwhen/?> ago (<?rtime/?>).
-0xc171,There have been <?requests/?> users looking for you:
-0xc172,The last one was <?rnick/?> (<?rhost/?>) on <?rchan/?> <?rwhen/?> ago (<?rtime/?>).
+0xc170,%s (%s) was looking for you on %s %s ago (%s).
+0xc171,There have been %s users looking for you:
+0xc172,The last one was %s (%s) on %s %s ago (%s).
 
 #
 ## seen stats

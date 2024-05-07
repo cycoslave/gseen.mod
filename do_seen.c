@@ -760,7 +760,10 @@ static void report_seenreq(char *channel, char *nick)
   seenreq *l, *ll;
   seenreq_by *b, *bb;
   char *reply, *tmp;
+  char tmp2[20];
   int nr;
+  time_t tt;
+  char t[20];
 
   if (!tell_seens)
     return;
@@ -775,24 +778,33 @@ static void report_seenreq(char *channel, char *nick)
       nr = count_seenreq(l->by);
       if (nr == 1) {
         glob_seenrequest = l;
-        dprintf(DP_HELP, "NOTICE %s :%s\n", l->nick, SLONELOOK);
+        char slonelookout[200];
+        tt = glob_seenrequest->by->when;
+        strftime(t, sizeof(t), "%d.%m.%Y %H:%M", localtime(&tt));
+        sprintf(slonelookout, SLONELOOK, glob_seenrequest->by->who, glob_seenrequest->by->host, glob_seenrequest->by->chan, gseen_duration(now - glob_seenrequest->by->when), t);
+        dprintf(DP_HELP, "NOTICE %s :%s\n", l->nick, slonelookout);
       } else {
         sortrequests(l);
         glob_seenrequest = l;
         glob_seenrequests = nr;
-        tmp = SLMORELOOKS;
+        tt = glob_seenrequest->by->when;
+        strftime(t, sizeof(t), "%d.%m.%Y %H:%M", localtime(&tt));
+        tmp = "";
+        snprintf(tmp2, sizeof(tmp2), "%d", glob_seenrequests);
+        sprintf(tmp, SLMORELOOKS, tmp2);
         reply = nmalloc(strlen(tmp) + 1);
-	    strcpy(reply, tmp);
-	    nr = 0;
+	      strcpy(reply, tmp);
+	      nr = 0;
         for (b = l->by; b; b = b->next) {
           nr++;
           reply = nrealloc(reply, strlen(reply) + ((nr == 1) ? 1 : 2) + strlen(b->who) + 1);
           sprintf(reply, "%s%s%s", reply, (nr == 1) ? " " : ", ", b->who);
-	    }
-        tmp = SLLASTLOOK;
+	      }
+        tmp = "";
+        sprintf(tmp, SLLASTLOOK, glob_seenrequest->by->who, glob_seenrequest->by->host, glob_seenrequest->by->chan, gseen_duration(now - glob_seenrequest->by->when), t);
         reply = nrealloc(reply, strlen(reply) + 2 + strlen(tmp) + 1);
         sprintf(reply, "%s. %s", reply, tmp);
-	    dprintf(DP_HELP, "NOTICE %s :%s\n", l->nick, reply);
+	      dprintf(DP_HELP, "NOTICE %s :%s\n", l->nick, reply);
         nfree(reply);
       }
       b = l->by;
