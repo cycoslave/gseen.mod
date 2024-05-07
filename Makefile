@@ -29,15 +29,8 @@ modules: ../../../gseen.$(MOD_EXT)
  .././gseen.mod/gseencmds.c \
  .././gseen.mod/do_seen.c \
  .././gseen.mod/ai.c \
- .././gseen.mod/tclcmds.c \
  .././gseen.mod/misc.c \
  .././gseen.mod/seentree.c \
  .././gseen.mod/generic_binary_tree.c \
- .././gseen.mod/slang_gseen_commands.c \
- .././gseen.mod/slang.c \
- .././gseen.mod/slang_text.c \
- .././gseen.mod/slang_ids.c \
- .././gseen.mod/slang_chanlang.c \
  .././gseen.mod/seenlang.h \
- .././gseen.mod/slang_multitext.c \
  .././gseen.mod/gseen.h

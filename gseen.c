@@ -42,7 +42,7 @@ static Function *global = NULL, *irc_funcs = NULL, *server_funcs = NULL, *channe
 #include "gseen.h"
 #include "seenlang.h"
 
-static struct slang_header *coreslangs = NULL;
+//static struct slang_header *coreslangs = NULL;
 static gseenres *results = NULL;
 static seenreq *requests = NULL;
 static ignoredword *ignoredwords = NULL;
@@ -61,7 +61,7 @@ static char quiet_seen[121];
 static char quiet_ai_seen[121];
 static char no_log[121];
 static char ignore_words[1024];
-static char default_slang[21] = "english";
+//static char default_slang[21] = "english";
 static int gseen_numversion = MODULE_NUMVERSION;
 static int save_seens = 60;
 static int save_seens_temp = 1;
@@ -84,17 +84,17 @@ static int seen_nick_len = 9;
 #define SLANG_NOFACTS 1
 #define SLANG_NOGETALL 1
 #define SLANG_NOVALIDATE 1
-#include "slang.c"
-#include "slang_gseen_commands.c"
+//#include "slang.c"
+//#include "slang_gseen_commands.c"
 #include "generic_binary_tree.c"
 #include "seentree.c"
 #include "datahandling.c"
 #include "sensors.c"
+#include "misc.c"
 #include "do_seen.c"
 #include "gseencmds.c"
 #include "ai.c"
-#include "misc.c"
-#include "tclcmds.c"
+//#include "tclcmds.c"
 
 static int gseen_expmem()
 {
@@ -104,9 +104,9 @@ static int gseen_expmem()
   size += expmem_seenresults();
   size += expmem_seenreq();
   size += expmem_ignoredwords();
-  size += slang_expmem(coreslangs);
-  size += slang_glob_expmem();
-  size += slang_chanlang_expmem(chanlangs);
+  //size += slang_expmem(coreslangs);
+  //size += slang_glob_expmem();
+  //size += slang_chanlang_expmem(chanlangs);
   if (bnsnick)
     size += strlen(bnsnick) + 1;
   if (bnschan)
@@ -120,8 +120,8 @@ static int gseen_expmem()
 static void free_gseen()
 {
   seentree_free();
-  slang_free(coreslangs);
-  slang_chanlang_free(chanlangs);
+  //slang_free(coreslangs);
+  //slang_chanlang_free(chanlangs);
   if (seen_reply)
     nfree(seen_reply);
   return;
@@ -163,7 +163,7 @@ static tcl_strings my_tcl_strings[] =
   {"quiet-ai-seens", quiet_ai_seen, 121, 0},
   {"no-log", no_log, 121, 0},
   {"no-seendata", no_log, 121, 0},
-  {"default-slang", default_slang, 20, 0},
+  //{"default-slang", default_slang, 20, 0},
   {0, 0, 0, 0}
 };
 
@@ -192,7 +192,7 @@ static char *gseen_close()
 {
   Context;
   write_seens();
-  slang_glob_free();
+  //slang_glob_free();
   free_gseen();
   free_seenreq();
   free_seenresults();
@@ -205,9 +205,9 @@ static char *gseen_close()
   rem_tcl_ints(my_tcl_ints);
   rem_tcl_coups(my_tcl_coups);
   rem_tcl_commands(mytcls);
-  rem_tcl_commands(gseentcls);
+  //rem_tcl_commands(gseentcls);
   rem_tcl_commands(seendebugtcls);
-  rem_tcl_commands(gseentcls);
+  //rem_tcl_commands(gseentcls);
   rem_builtins(H_dcc, mydcc);
   rem_builtins(H_join, seen_join);
   rem_builtins(H_kick, seen_kick);
@@ -261,9 +261,9 @@ char *gseen_start(Function * global_funcs)
     module_undepend(MODULE_NAME);
     return "This module requires Eggdrop 1.9.0 or later.";
   }
-  chanlangs = NULL;
-  coreslangs = NULL;
-  slang_glob_init();
+  //chanlangs = NULL;
+  //coreslangs = NULL;
+  //slang_glob_init();
 
   results = NULL;
   requests = NULL;
@@ -286,7 +286,7 @@ char *gseen_start(Function * global_funcs)
   add_tcl_coups(my_tcl_coups);
   add_tcl_commands(mytcls);
   add_tcl_commands(seendebugtcls);
-  add_tcl_commands(gseentcls);
+  //add_tcl_commands(gseentcls);
   add_builtins(H_dcc, mydcc);
   add_builtins(H_join, seen_join);
   add_builtins(H_kick, seen_kick);
@@ -306,7 +306,7 @@ char *gseen_start(Function * global_funcs)
   initudef(1, "quietseens", 1);
   initudef(1, "quietaiseens", 1);
   initudef(1, "nopubseens", 1);
-  glob_slang_cmd_list = slang_commands_list_add(glob_slang_cmd_list, slang_text_gseen_command_table);
+  //glob_slang_cmd_list = slang_commands_list_add(glob_slang_cmd_list, slang_text_gseen_command_table);
   putlog(LOG_MISC, "*", "gseen.mod v%s loaded.", MODULE_VERSION);
   return NULL;
 }

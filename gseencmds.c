@@ -16,12 +16,6 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#define PREFIX_LENGTH 20
-
-static char reply_prefix[PREFIX_LENGTH + 1];
-#define set_prefix(x) strncpy(reply_prefix, x, PREFIX_LENGTH); \
-	reply_prefix[PREFIX_LENGTH] = 0;
-
 static int seenflood()
 {
   if (!maxseen_thr || !maxseen_time)
@@ -77,13 +71,12 @@ static int cmd_seen(struct userrec *u, int idx, char *par)
   if (seenflood())
     return 0;
   reset_global_vars();
-  glob_slang = slang_find(coreslangs, default_slang);
+  //glob_slang = slang_find(coreslangs, default_slang);
   glob_nick = dcc[idx].nick;
   query = newsplit(&par);
   glob_query = query;
-  set_prefix(SLDCCPREFIX);
   putlog(LOG_CMDS, "*", "#%s# seen %s", dcc[idx].nick, par);
-  dprintf(idx, "%s%s\n", reply_prefix, do_seen(query, dcc[idx].nick,
+  dprintf(idx, "%s\n", do_seen(query, dcc[idx].nick,
   	  dcc[idx].host, "[partyline]", botnet_seen));
   return 0;
 }
@@ -94,10 +87,10 @@ static int cmd_seenstats(struct userrec *u, int idx, char *par)
   if (seenflood())
     return 0;
   reset_global_vars();
-  glob_slang = slang_find(coreslangs, default_slang);
+  //glob_slang = slang_find(coreslangs, default_slang);
   glob_nick = dcc[idx].nick;
   putlog(LOG_CMDS, "*", "#%s# seenstats", dcc[idx].nick);
-  dprintf(idx, "%s%s\n", reply_prefix, do_seenstats());
+  dprintf(idx, "%s\n", do_seenstats());
   return 0;
 }
 
@@ -119,7 +112,7 @@ static int pub_seen(char *nick, char *host, char *hand,
   if (seenflood() || nopub(channel))
     return 0;
   reset_global_vars();
-  glob_slang = slang_find(coreslangs, slang_chanlang_get(chanlangs, channel));
+  //glob_slang = slang_find(coreslangs, slang_chanlang_get(chanlangs, channel));
   glob_nick = nick;
   putlog(LOG_CMDS, "*", "<<%s>> !%s! seen %s", nick, hand, text);
   if (quietseen(channel)) {
@@ -144,12 +137,10 @@ static int pub_seenstats(char *nick, char *host, char *hand,
   struct chanset_t *chan;
 
   Context;
-  if (seenflood())
-    return 0;
-  if (nopub(channel))
+  if (seenflood() || nopub(channel))
     return 0;
   reset_global_vars();
-  glob_slang = slang_find(coreslangs, slang_chanlang_get(chanlangs, channel));
+  //glob_slang = slang_find(coreslangs, slang_chanlang_get(chanlangs, channel));
   glob_nick = nick;
   putlog(LOG_CMDS, "*", "<<%s>> !%s! seenstats", nick, hand);
   if (quietseen(channel)) {
@@ -171,11 +162,10 @@ static int msg_seen(char *nick, char *uhost, struct userrec *u, char *text)
   if (seenflood())
     return 0;
   reset_global_vars();
-  glob_slang = slang_getbynick(coreslangs, nick);
+  //glob_slang = slang_getbynick(coreslangs, nick);
   glob_nick = nick;
   putlog(LOG_CMDS, "*", "(%s!%s) !%s! seen %s", nick, uhost, u ? u->handle : "*", text);
-  set_prefix(SLMSGPREFIX);
-  dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", nick, reply_prefix,
+  dprintf(DP_HELP, "PRIVMSG %s :%s\n", nick,
   	  do_seen(newsplit(&text), nick, uhost, "[/msg]", botnet_seen));
   return 1;
 }
@@ -188,13 +178,11 @@ static int pub_seennick(char *nick, char *host, char *hand,
   struct chanset_t *chan;
 
   Context;
-  if (seenflood())
-    return 0;
-  if (nopub(channel))
+  if (seenflood() || nopub(channel))
     return 0;
   putlog(LOG_CMDS, "*", "<<%s>> !%s! seennick %s", nick, hand, text);
   reset_global_vars();
-  glob_slang = slang_find(coreslangs, slang_chanlang_get(chanlangs, channel));
+  //glob_slang = slang_find(coreslangs, slang_chanlang_get(chanlangs, channel));
   glob_nick = nick;
   chan = findchan_by_dname(channel);
   if (chan)
@@ -238,17 +226,16 @@ static int msg_seennick(char *nick, char *uhost, struct userrec *u, char *text)
     return 0;
   putlog(LOG_CMDS, "*", "(%s!%s) !%s! seennick %s", nick, uhost, u ? u->handle : "*", text);
   reset_global_vars();
-  glob_slang = slang_getbynick(coreslangs, nick);
+  //glob_slang = slang_getbynick(coreslangs, nick);
   glob_nick = nick;
-  set_prefix(SLMSGPREFIX);
   text = newsplit(&text);
   l = findseen(text);
   if (!l) {
     glob_query = text;
-    dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", nick, reply_prefix, SLNOTSEEN);
+    dprintf(DP_HELP, "PRIVMSG %s :%s\n", nick, SLNOTSEEN);
     return 0;
   }
-  dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", nick, reply_prefix, do_seennick(l));
+  dprintf(DP_HELP, "PRIVMSG %s :%s\n", nick, do_seennick(l));
   return 0;
 }
 
@@ -261,17 +248,16 @@ static int cmd_seennick(struct userrec *u, int idx, char *text)
     return 0;
   putlog(LOG_CMDS, "*", "#%s# seennick %s", dcc[idx].nick, text);
   reset_global_vars();
-  glob_slang = slang_find(coreslangs, default_slang);
+  //glob_slang = slang_find(coreslangs, default_slang);
   glob_nick = dcc[idx].nick;
-  set_prefix(SLMSGPREFIX);
   text = newsplit(&text);
   l = findseen(text);
   if (!l) {
     glob_query = text;
-    dprintf(idx, "%s%s\n", reply_prefix, SLNOTSEEN);
+    dprintf(idx, "%s\n", SLNOTSEEN);
     return 0;
   }
-  dprintf(idx, "%s%s\n", reply_prefix, do_seennick(l));
+  dprintf(idx, "%s\n", do_seennick(l));
   return 0;
 }
 
@@ -294,7 +280,7 @@ static int bot_gseen_req(char *bot, char *code, char *par)
   uhost = newsplit(&par);
   chan = newsplit(&par);
   reset_global_vars();
-  glob_slang = slang_find(coreslangs, slang_chanlang_get(chanlangs, chan));
+  //glob_slang = slang_find(coreslangs, slang_chanlang_get(chanlangs, chan));
   glob_nick = nick;
   reply = do_seen(mask, nick, uhost, chan, -1);
   if (!reply)
@@ -326,7 +312,7 @@ static int bot_gseen_rep(char *bot, char *code, char *par)
   chan = newsplit(&par);
   reset_global_vars();
   glob_remotebot = bot;
-  glob_slang = slang_find(coreslangs, slang_chanlang_get(chanlangs, chan));
+  //glob_slang = slang_find(coreslangs, slang_chanlang_get(chanlangs, chan));
   glob_nick = nick;
   reply = par;
   if (strcmp(nick, bnsnick) || strcmp(chan, bnschan))
@@ -340,21 +326,17 @@ static int bot_gseen_rep(char *bot, char *code, char *par)
       return 0;
     }
     if (quietseen(chan)) {
-      set_prefix(SLNOTPREFIX);
-      dprintf(DP_HELP, "NOTICE %s :%s%s%s\n", nick, reply_prefix, SLRBOTSAYS, reply);
+      dprintf(DP_HELP, "NOTICE %s :%s%s\n", nick, SLRBOTSAYS, reply);
     } else {
-      set_prefix(SLPUBPREFIX);
-      dprintf(DP_HELP, "PRIVMSG %s :%s%s%s\n", chan, reply_prefix, SLRBOTSAYS, reply);
+      dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", chan, SLRBOTSAYS, reply);
     }
   } else if (!strcmp(chan, "[/msg]")) {
-    set_prefix(SLMSGPREFIX);
-    dprintf(DP_HELP, "PRIVMSG %s :%s%s%s\n", nick, reply_prefix, SLRBOTSAYS, reply);
+    dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", nick, SLRBOTSAYS, reply);
   } else if (!strcmp(chan, "[partyline]")) {
     for (i = 0; i < dcc_total; i++) {
       if ((!strcasecmp(nick, dcc[i].nick)) &&
          (dcc[i].type->flags & DCT_SIMUL)) {
-	set_prefix(SLDCCPREFIX);
-        dprintf(i, "%s%s%s\n", reply_prefix, SLRBOTSAYS, reply);
+        dprintf(i, "%s%s\n", SLRBOTSAYS, reply);
         break;
       }
     }

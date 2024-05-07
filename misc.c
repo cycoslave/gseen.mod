@@ -114,3 +114,81 @@ static void maskstricthost(const char *s, char *nw)
     }
   }
 }
+
+
+// From gseen.mod's old slang.c
+static char getslang_error[17];
+static char *getslang(int id, seendat *l)
+{
+  time_t tt;
+  char t[20];
+  char *text = malloc(250); 
+  if (text == NULL) {
+      return NULL;
+  }
+
+  //if (!glob_slang) {
+  //  putlog(LOG_MISC, "*", "WARNING! No language selected! (getslang())");
+  //  return "NOLANG";
+  //}
+  char hex_str[10];
+  sprintf(hex_str, "0xc%d", id);
+  tt = glob_seendat->when;
+  strftime(t, sizeof(t), "%d.%m.%Y %H:%M", localtime(&tt));
+  switch (id) {
+    case 101:
+    case 121:
+    case 108:
+      sprintf(text, get_language(strtol(hex_str, NULL, 16)), l->nick, l->host, l->chan, gseen_duration(now - glob_seendat->when), t, glob_seendat->nick);
+      break;
+    case 102:
+    case 107:
+      sprintf(text, get_language(strtol(hex_str, NULL, 16)), l->nick, l->host, l->chan, gseen_duration(now - glob_seendat->when), t, gseen_duration(glob_seendat->spent));
+      break;
+    case 103:
+      sprintf(text, get_language(strtol(hex_str, NULL, 16)), l->nick, l->host, l->chan, gseen_duration(now - glob_seendat->when), t, glob_seendat->msg, gseen_duration(glob_seendat->spent));
+      break;
+    case 104:
+    case 124:
+      sprintf(text, get_language(strtol(hex_str, NULL, 16)), l->nick, l->host, glob_seendat->msg, l->chan, gseen_duration(now - glob_seendat->when), t, glob_seendat->msg);
+      break;
+    case 105:
+    case 125:
+      sprintf(text, get_language(strtol(hex_str, NULL, 16)), l->nick, l->host, glob_seendat->msg, l->chan, gseen_duration(now - glob_seendat->when), t, l->nick);
+      break;
+    case 106:
+      char data[100];
+      strcpy(data, glob_seendat->msg);
+      char *punisher = data;
+      char *reason = strchr(data, ' ');
+      if (reason) {
+        *reason = '\0';
+        reason++;
+      } else {
+        reason = "";
+      }
+      sprintf(text, get_language(strtol(hex_str, NULL, 16)), l->nick, l->host, l->chan, punisher, reason, gseen_duration(now - glob_seendat->when), t, gseen_duration(glob_seendat->spent));
+      break;
+    case 128:
+      sprintf(text, get_language(strtol(hex_str, NULL, 16)), l->nick, l->host, l->chan, gseen_duration(now - glob_seendat->when), t);
+      break;
+    case 109:
+    case 110:
+      sprintf(text, get_language(strtol(hex_str, NULL, 16)), l->nick, l->chan, glob_seendat->msg, gseen_duration(now - glob_seendat->when), t);
+      break;
+    case 129:
+    case 130:
+      sprintf(text, get_language(strtol(hex_str, NULL, 16)), l->nick, glob_seendat->msg, gseen_duration(now - glob_seendat->when), t);
+      break;
+    case 140:
+      sprintf(text, get_language(strtol(hex_str, NULL, 16)), l->nick, l->host, l->chan, gseen_duration(now - glob_seendat->when), t);
+      break;
+    default:
+      text = get_language(strtol(hex_str, NULL, 16));
+  }
+  if (!text) {
+    snprintf(getslang_error, sizeof(getslang_error), "MSGC%d", id);
+    return getslang_error;
+  }
+  return text;
+}

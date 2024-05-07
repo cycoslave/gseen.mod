@@ -115,23 +115,23 @@
 #
 ## the core info
 #
-0xc101,%s (<?shost/?>) was last seen joining <?schan/?> <?swhen/?> ago (<?stime/?>). <?snick/?> is still there.
-0xc121,<?snick/?> (<?shost/?>) was last seen joining <?schan/?> <?swhen/?> ago (<?stime/?>), but <?snick/?> mysteriously dematerialized.
-0xc102,<?snick/?> (<?shost/?>) was last seen parting <?schan/?> <?swhen/?> ago (<?stime/?>), after spending <?spent/?> there.
-0xc103,<?snick/?> (<?shost/?>) was last seen quitting <?schan/?> <?swhen/?> ago (<?stime/?>) stating "<?smsg/?>" after spending <?spent/?> there.
-0xc104,<?snick/?> (<?shost/?>) was last seen changing his/her nick to <?snick2/?> on <?schan/?> <?swhen/?> ago (<?stime/?>). <?snick2/?> is still there.
-0xc124,<?snick/?> (<?shost/?>) was last seen changing his/her nick to <?snick2/?> on <?schan/?> <?swhen/?> ago (<?stime/?>), but <?snick2/?> mysteriously dematerialized.
-0xc105,<?snick/?> (<?shost/?>) was last seen changing his/her nick from <?snick2/?> on <?schan/?> <?swhen/?> ago (<?stime/?>). <?snick/?> is still there.
-0xc125,<?snick/?> (<?shost/?>) was last seen changing his/her nick from <?snick2/?> on <?schan/?> <?swhen/?> ago (<?stime/?>), but <?snick/?> mysteriously dematerialized.
-0xc106,<?snick/?> (<?shost/?>) was last seen being kicked from <?schan/?> by <?punisher/?> (<?kickreason/?>) <?swhen/?> ago (<?stime/?>), after spending <?spent/?> there.
-0xc107,<?snick/?> (<?shost/?>) was last seen splitting from <?schan/?> <?swhen/?> ago (<?stime/?>), after spending <?spent/?> there.
-0xc108,<?snick/?> (<?shost/?>) was last seen rejoining <?schan/?> from a netsplit <?swhen/?> ago (<?stime/?>) <?snick/?> is still there.
-0xc128,<?snick/?> (<?shost/?>) was last seen rejoining <?schan/?> from a netsplit <?swhen/?> ago (<?stime/?>), but the god of netsplits didn't let him escape, so he's not here now.
-0xc109,<?snick/?> was last seen joining the botnet channel <?schan/?> on <?bnbot/?> <?swhen/?> ago (<?stime/?>).
-0xc129,<?snick/?> was last seen joining the partyline on <?bnbot/?> <?swhen/?> ago (<?stime/?>).
-0xc110,<?snick/?> was last seen leaving the botnet channel <?schan/?> from <?bnbot/?> <?swhen/?> ago (<?stime/?>).
-0xc130,<?snick/?> was last seen leaving the partyline from <?bnbot/?> <?swhen/?> ago (<?stime/?>).
-0xc140,<?snick/?> (<?shost/?>) was last seen on <?schan/?> <?swhen/?> ago (<?stime/?>).
+0xc101,%s (%s) was last seen joining %s %s ago (%s). %s is still there.
+0xc121,%s (%s) was last seen joining %s %s ago (%s), but %s mysteriously dematerialized.
+0xc102,%s (%s) was last seen parting %s %s ago (%s), after spending %s there.
+0xc103,%s (%s) was last seen quitting %s %s ago (%s) stating "%s" after spending %s there.
+0xc104,%s (%s) was last seen changing his/her nick to %s on %s %s ago (%s). %s is still there.
+0xc124,%s (%s) was last seen changing his/her nick to %s on %s %s ago (%s), but %s mysteriously dematerialized.
+0xc105,%s (%s) was last seen changing his/her nick from %s on %s %s ago (%s). <%s> is still there.
+0xc125,%s (%s) was last seen changing his/her nick from %s on %s %s ago (%s), but <%s> mysteriously dematerialized.
+0xc106,%s (%s) was last seen being kicked from %s by %s (%s) %s ago (%s), after spending %s there.
+0xc107,%s (%s) was last seen splitting from %s %s ago (%s), after spending %s there.
+0xc108,%s (%s) was last seen rejoining %s from a netsplit %s ago (%s). %s is still there.
+0xc128,%s (%s) was last seen rejoining %s from a netsplit %s ago (%s), but the god of netsplits didn't let him escape, so he's not here now.
+0xc109,%s was last seen joining the botnet channel %s on %s %s ago (%s).
+0xc129,%s was last seen joining the partyline on %s %s ago (%s).
+0xc110,%s was last seen leaving the botnet channel %s from %s %s ago (%s).
+0xc130,%s was last seen leaving the partyline from %s %s ago (%s).
+0xc140,%s (%s) was last seen on %s %s ago (%s).
 
 #
 ## seen notification

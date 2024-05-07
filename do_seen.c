@@ -231,6 +231,7 @@ static char *do_seen(char *mask, char *nick, char *uhost, char *chan, int bns)
  * takes a seen-dataset and produces the corresponding reply basically
  * by referencing to the lang entry with the same number as the seen-type.
  */
+//static char seennickout[150];
 static char *do_seennick(seendat *l)
 {
 //  char buf[256], *msg;
@@ -287,7 +288,7 @@ static char *do_seennick(seendat *l)
     default:
       stype = 140;
   }
-  return getslang(stype);
+  return getslang(stype, l);
 }
 
 /* findseens():
@@ -769,7 +770,7 @@ static void report_seenreq(char *channel, char *nick)
   while (l) {
     if (!strcasecmp(l->nick, nick)) {
       reset_global_vars();
-      glob_slang = slang_find(coreslangs, slang_chanlang_get(chanlangs, channel));
+      //glob_slang = slang_find(coreslangs, slang_chanlang_get(chanlangs, channel));
       glob_nick = nick;
       nr = count_seenreq(l->by);
       if (nr == 1) {

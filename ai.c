@@ -47,7 +47,7 @@ static int tcl_pubmseen STDVAR
   chan = argv[4];
   text = argv[5];
   reset_global_vars();
-  glob_slang = slang_find(coreslangs, slang_chanlang_get(chanlangs, chan));
+  //glob_slang = slang_find(coreslangs, slang_chanlang_get(chanlangs, chan));
   glob_nick = nick;
   for (i = 0; i < strlen(text); i++)
     if (strchr("!?.,\"", text[i]))
@@ -67,12 +67,10 @@ static int tcl_pubmseen STDVAR
     l = findseen(word);
     if (l) {
       if (quietaiseens(chan)) {
-	set_prefix(SLNOTPREFIX);
-        dprintf(DP_HELP, "NOTICE %s :%s%s\n", nick, reply_prefix,
+        dprintf(DP_HELP, "NOTICE %s :%s\n", nick,
         	do_seen(word, nick, uhost, chan, 0));
       } else {
-	set_prefix(SLPUBPREFIX);
-        dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", chan, reply_prefix,
+        dprintf(DP_HELP, "PRIVMSG %s :%s\n", chan,
         	do_seen(word, nick, uhost, chan, 0));
       }
       add_seenreq(word, nick, uhost, chan, now);
