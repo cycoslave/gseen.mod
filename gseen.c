@@ -299,6 +299,7 @@ char *gseen_start(Function * global_funcs)
   add_builtins(H_pub, seen_pub);
   add_builtins(H_msg, seen_msg);
   add_builtins(H_bot, seen_bot);
+  add_lang_section("gseen");
   read_seens();
   add_hook(HOOK_MINUTELY, (Function) gseen_minutely);
   add_hook(HOOK_DAILY, (Function) gseen_daily);
