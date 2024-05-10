@@ -195,22 +195,22 @@ static int pub_seennick(char *nick, char *host, char *hand,
   if (!l) {
     glob_query = text;
     if (quietseen(channel)) {
-      char output[100];
-      sprintf(output, "NOTICE %s :%s, %s\n", nick, nick, SLNOTSEEN);
-      dprintf(DP_HELP, output, text);
+      char output[240];
+      sprintf(output, SLNOTSEEN, text);
+      dprintf(DP_HELP, "NOTICE %s :%s, %s\n", nick, nick, output);
     } else {
-      char output[100];
-      sprintf(output, "PRIVMSG %s :%s, %s\n", dest, nick, SLNOTSEEN);
-      dprintf(DP_HELP, output, text);
+      char output[240];
+      sprintf(output, SLNOTSEEN, text);
+      dprintf(DP_HELP, "PRIVMSG %s :%s, %s\n", dest, nick, output);
     }
     return 0;
   }
   if (quietseen(channel)) {
-    char output[100];
+    char output[240];
     sprintf(output, "NOTICE %s :%s, %s\n", nick, nick, do_seennick(l));
     dprintf(DP_HELP, output, nick, text);
   } else {
-    char output[100];
+    char output[240];
     sprintf(output, "PRIVMSG %s :%s, %s\n", dest, nick, do_seennick(l));
     dprintf(DP_HELP, output, nick, text);
   }
