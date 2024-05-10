@@ -23,21 +23,6 @@
 #
 # each time string in singular and plural
 #
-#D 0 year
-#D 1 years
-#D 2 week
-#D 3 weeks
-#D 4 day
-#D 5 days
-#D 6 hour
-#D 7 hours
-#D 8 minute
-#D 9 minutes
-#D 10 second
-#D 11 seconds
-# if an invalid time value was supplied, output the following string
-#D 12 some time
-
 0xcA00,year
 0xcA01,years
 0xcA02,week
@@ -73,7 +58,6 @@
 #
 #0xc054,do you know what a parameter is?
 0xc054,don't you think it would be more reasonable to say for whom you are searching?
-0xc042,.
 0xc055,do I look like a mirror? ^_^
 #0xc055,mirror mirror on the wall...
 #0xc055,do you have a split personality? *eg*

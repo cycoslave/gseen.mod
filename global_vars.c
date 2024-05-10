@@ -18,7 +18,7 @@
 
 static char *glob_query, *glob_laston, *glob_otherchan, *glob_othernick;
 static char *glob_remotebot, *glob_nick;
-static struct slang_header *glob_slang;
+//static struct slang_header *glob_slang;
 static seendat *glob_seendat;
 static seenreq *glob_seenrequest;
 static int glob_seenrequests, glob_totalnicks, glob_totalbytes;
@@ -28,7 +28,7 @@ static void reset_global_vars()
   glob_query = glob_laston = glob_otherchan = glob_othernick = NULL;
   glob_remotebot = glob_nick = NULL;
   glob_seendat = NULL;
-  glob_slang = NULL;
+  //glob_slang = NULL;
   glob_seenrequest = NULL;
   glob_seenrequests = glob_totalnicks = glob_totalbytes = 0;
 }

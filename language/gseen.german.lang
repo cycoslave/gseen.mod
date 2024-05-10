@@ -67,11 +67,11 @@
 #0xc054,meinst Du nicht, es w�re geschickter zu sagen, nach wem Du �berhaupt suchst?
 #0xc054,42.
 0xc055,sehe ich etwa wie ein Spiegel aus? ^_^
-0xc055,Spieglein, Spieglein an der Wand...
-0xc055,leidest Du etwa unter multiplen Pers�nlichkeiten? *eg*
-0xc056,also wenn Du <?query/?> jetzt hier nicht sehen kannst, dann brauchst Du sicherlich eine neue Brille ^_^
-0xc056,ich muss mir unbedingt mal die Tarnkappe von <?query/?> ausleihen. Scheint ja prima zu funktioneren.
-0xc056,schau Dir bitte nochmal ganz genau an, wer grade alles im Channel ist.
+#0xc055,Spieglein, Spieglein an der Wand...
+#0xc055,leidest Du etwa unter multiplen Pers�nlichkeiten? *eg*
+0xc056,also wenn Du %s jetzt hier nicht sehen kannst, dann brauchst Du sicherlich eine neue Brille ^_^
+#0xc056,ich muss mir unbedingt mal die Tarnkappe von %s ausleihen. Scheint ja prima zu funktioneren.
+#0xc056,schau Dir bitte nochmal ganz genau an, wer grade alles im Channel ist.
 0xc057,Tut mir leid, aber Wildcards ('?', oder '*') sind bei der Suche nicht erlaubt.
 0xc058,�hm... naja... etwas arg lang, dieser Nick... :)
 
@@ -79,53 +79,53 @@
 ## Kein Ergebnis
 #
 0xc065,Ich kann mich nicht daran erinnern, %s gesehen zu haben...
-0xc065,%s? Hmm... ich bin mir nicht sicher... vielleicht... eventuell... nein, kenne ich nicht.
-0xc065,der %s sagt mir nichts. Hast Du Dich vielleicht vertippt?
+#0xc065,%s? Hmm... ich bin mir nicht sicher... vielleicht... eventuell... nein, kenne ich nicht.
+#0xc065,der %s sagt mir nichts. Hast Du Dich vielleicht vertippt?
 0xc066,Ich hab' %s seit %s nicht mehr gesehen.
 0xc067,Sorry, aber zu deiner Anfrage passt nichts in meiner Datenbank :(
 0xc068,Autschi, das gab viel zu viele Ergebnisse. Bitte formuliere deine Suche etwas genauer.
 
-0xc073,<?query/?> ist grade unter dem Nick "<?othernick/?>" in diesem Channel zu finden.
-0xc074,<?query/?> ist gerade in <?otherchan/?>.
+0xc073,%s ist grade unter dem Nick "%s" in diesem Channel zu finden.
+0xc074,%s ist gerade in %s.
 0xc075,Deine Anfrage f�hrte zu genau einem Ergebnis:
-0xc076,Immerhin <?numresults/?> Treffer ergab deine Anfrage:
-0xc077,Wow, auf deine Anfrage passen sogar <?numresults/?> Eintr�ge in meiner Datenbank! Dies sind die 5 aktuellsten:
+0xc076,Immerhin %d Treffer ergab deine Anfrage:
+0xc077,Wow, auf deine Anfrage passen sogar %d Eintr�ge in meiner Datenbank! Dies sind die 5 aktuellsten:
 
 #
 ## falls ein anderer Bot etwas gefunden hat:
 #
-0xc085,<?remotebot/?> sagt: 
+0xc085,%s sagt: 
 
 #
 ## die eigentliche Information
 #
-0xc101,Ich habe <?snick/?> (<?shost/?>) zuletzt <?schan/?> vor <?swhen/?> betreten sehen (<?stime/?>). <?snick/?> ist noch immer da.
-0xc121,Ich habe <?snick/?> (<?shost/?>) zuletzt <?schan/?> vor <?swhen/?> betreten sehen (<?stime/?>), aber <?snick/?> verschwand mysteri�serweise.
-0xc102,Ich habe <?snick/?> (<?shost/?>) zuletzt <?schan/?> vor <?swhen/?> nach <?spent/?> verchatteter Zeit verlassen sehen (<?stime/?>)
-0xc103,Ich habe <?snick/?> (<?shost/?>) zuletzt in <?schan/?> gesehen, als er/sie vor <?swhen/?> (<?stime/?>) nach <?spent/?> das IRC verlie� ("<?smsg/?>").
-0xc104,Zuletzt habe ich <?snick/?> (<?shost/?>) vor <?swhen/?> in <?schan/?> gesehen, den Nick zu <?snick2/?> wechselnd. <?snick2/?> ist noch immer dort.
-0xc124,<?snick/?> (<?shost/?>) was last seen changing his/her nick to <?snick2/?> on <?schan/?> <?swhen/?> ago (<?stime/?>), but <?snick2/?> mysteriously dematerialized.
-0xc105,Zuletzt habe ich <?snick/?> (<?shost/?>) vor <?swhen/?> in <?schan/?> gesehen, den Nick von <?snick2/?> wechselnd. <?snick/?> ist noch immer dort.
-0xc125,<?snick/?> (<?shost/?>) was last seen changing his/her nick from <?snick2/?> on <?schan/?> <?swhen/?> ago (<?stime/?>), but <?snick/?> mysteriously dematerialized.
-0xc106,Zuletzt habe ich <?snick/?> (<?shost/?>) gesehen, als er vor <?swhen/?> (<?stime/?>) von <?punisher/?> aus <?schan/?> gejagt wurde. (<?kickreason/?>)
-0xc107,<?snick/?> (<?shost/?>) habe ich zuletzt vor <?swhen/?> gesehen, als er/sie von <?schan/?> aus in einem Netsplit verschwand.
-0xc108,<?snick/?> (<?shost/?>) habe ich zuletzt vor <?swhen/?> gesehen, als er/sie nach einem Netsplit in <?schan/?> zur�ck kam. <?snick/?> ist noch immer dort.
-0xc128,<?snick/?> (<?shost/?>) habe ich zuletzt vor <?swhen/?> gesehen, als er/sie nach einem Netsplit in <?schan/?> zur�ck kam. Allerdings konnte <?snick/?> dem Gott der Netsplits nicht endg�ltig entkommen und ist wieder verschollen...
-0xc109,<?snick/?> was last seen joining the botnet channel <?schan/?> on <?bnbot/?> <?swhen/?> ago (<?stime/?>).
-0xc129,<?snick/?> was last seen joining the partyline on <?bnbot/?> <?swhen/?> ago (<?stime/?>).
-0xc110,<?snick/?> was last seen leaving the botnet channel <?schan/?> from <?bnbot/?> <?swhen/?> ago (<?stime/?>).
-0xc130,<?snick/?> was last seen leaving the partyline from <?bnbot/?> <?swhen/?> ago (<?stime/?>).
-0xc140,<?snick/?> (<?shost/?>) was last seen on <?schan/?> <?swhen/?> ago (<?stime/?>).
+0xc101,Ich habe %s (%s) zuletzt %s vor %s betreten sehen (%s). %s ist noch immer da.
+0xc121,Ich habe %s (%s) zuletzt %s vor %s betreten sehen (%s), aber %s verschwand mysteri�serweise.
+0xc102,Ich habe %s (%s) zuletzt %s vor %s nach %s verchatteter Zeit verlassen sehen (%s)
+0xc103,Ich habe %s (%s) zuletzt in %s gesehen, als er/sie vor %s (%s) nach %s das IRC verlie� ("%s").
+0xc104,Zuletzt habe ich %s (%s) vor %s in %s gesehen, den Nick zu %s wechselnd. %s ist noch immer dort.
+0xc124,%s (%s) was last seen changing his/her nick to %s on %s %s ago (%s), but %s mysteriously dematerialized.
+0xc105,Zuletzt habe ich %s (%s) vor %s in %s gesehen, den Nick von %s wechselnd. %s ist noch immer dort.
+0xc125,%s (%s) was last seen changing his/her nick from %s on %s %s ago (%s), but %s mysteriously dematerialized.
+0xc106,Zuletzt habe ich %s (%s) gesehen, als er vor %s (%s) von %s aus %s gejagt wurde. (%s)
+0xc107,%s (%s) habe ich zuletzt vor %s gesehen, als er/sie von %s aus in einem Netsplit verschwand.
+0xc108,%s (%s) habe ich zuletzt vor %s gesehen, als er/sie nach einem Netsplit in %s zur�ck kam. %s ist noch immer dort.
+0xc128,%s (%s) habe ich zuletzt vor %s gesehen, als er/sie nach einem Netsplit in %s zur�ck kam. Allerdings konnte %s dem Gott der Netsplits nicht endg�ltig entkommen und ist wieder verschollen...
+0xc109,%s was last seen joining the botnet channel %s on %s %s ago (%s).
+0xc129,%s was last seen joining the partyline on %s %s ago (%s).
+0xc110,%s was last seen leaving the botnet channel %s from %s %s ago (%s).
+0xc130,%s was last seen leaving the partyline from %s %s ago (%s).
+0xc140,%s (%s) was last seen on %s %s ago (%s).
 
 #
 ## Seen-Mitteilungen
 #
-0xc170,<?rnick/?> (<?rhost/?>) scheint vor <?rwhen/?> (<?rtime/?>) in <?rchan/?> auf der Suche nach Dir gewesen zu sein.
-0xc171,<?requests/?> Leute haben sich nach Dir erkundigt:
-0xc172,Der/die letzte war <?rnick/?> (<?rhost/?>) in <?rchan/?> vor <?rwhen/?> (<?rtime/?>).
+0xc170,%s (%s) scheint vor %s (%s) in %s auf der Suche nach Dir gewesen zu sein.
+0xc171,%s Leute haben sich nach Dir erkundigt:
+0xc172,Der/die letzte war %s (%s) in %s vor %s (%s).
 
 #
 ## Statistiken
 #
-0xc180,Momentan sind <?totalnicks/?> Nicks in meiner Datenbank. Gesamter Speicherverbrauch: <?totalbytes/?> Bytes
-0xc180,In meiner Datenbank befinden sich <?totalnicks/?> Nicks und verbrauchen <?totalbytes/?> Bytes Speicher.
+0xc180,Momentan sind %s Nicks in meiner Datenbank. Gesamter Speicherverbrauch: %s Bytes
+#0xc180,In meiner Datenbank befinden sich %s Nicks und verbrauchen %s Bytes Speicher.
