@@ -295,6 +295,7 @@ static int bot_gseen_req(char *bot, char *code, char *par)
 static int bot_gseen_rep(char *bot, char *code, char *par)
 {
   char *nick, *chan, *reply;
+  char bot_says[32];
   int i;
 
   Context;
@@ -325,18 +326,21 @@ static int bot_gseen_rep(char *bot, char *code, char *par)
       debug1("%s is nopub, bns-reply dropped", chan);
       return 0;
     }
+    snprintf(bot_says, sizeof(bot_says), SLRBOTSAYS, bot);
     if (quietseen(chan)) {
-      dprintf(DP_HELP, "NOTICE %s :%s%s\n", nick, SLRBOTSAYS, reply);
+      dprintf(DP_HELP, "NOTICE %s :%s%s\n", nick, bot_says, reply);
     } else {
-      dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", chan, SLRBOTSAYS, reply);
+      dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", chan, bot_says, reply);
     }
   } else if (!strcmp(chan, "[/msg]")) {
-    dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", nick, SLRBOTSAYS, reply);
+    snprintf(bot_says, sizeof(bot_says), SLRBOTSAYS, bot);
+    dprintf(DP_HELP, "PRIVMSG %s :%s%s\n", nick, bot_says, reply);
   } else if (!strcmp(chan, "[partyline]")) {
+    snprintf(bot_says, sizeof(bot_says), SLRBOTSAYS, bot);
     for (i = 0; i < dcc_total; i++) {
       if ((!strcasecmp(nick, dcc[i].nick)) &&
          (dcc[i].type->flags & DCT_SIMUL)) {
-        dprintf(i, "%s%s\n", SLRBOTSAYS, reply);
+        dprintf(i, "%s%s\n", bot_says, reply);
         break;
       }
     }

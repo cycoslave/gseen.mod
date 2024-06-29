@@ -1,20 +1,10 @@
 #####################################################################
 #
-# Default English langfile for GSeen.Mod v1.1.0
+# Default English langfile for GSeen.Mod v1.3.1
 #
 # Just edit the text below to fit your needs. You can add or remove
 # any tag just like you want, they do not need to appear in a special
 # order (or number).
-#
-# If you enter more than one line per ID, then a random one will be
-# chosen for each reply. (this does not work for the time strings)
-#
-# If you think you need more tags, just email me and maybe I'll add
-# them in the next release.
-#
-# A complete list of available Tags can be found at the end of the
-# file slang_gseen_commands.c (unfortunately, it does not contain any
-# descriptions for the tags)
 #
 #####################################################################
 
