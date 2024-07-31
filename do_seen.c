@@ -143,7 +143,9 @@ static char *do_seen(char *mask, char *nick, char *uhost, char *chan, int bns)
         // in the userbase, so let's just return that one.
         dur = gseen_duration(now - li->laston);
         glob_laston = dur;
-        tmp = SLPOORSEEN;
+        char slpoorout[100];
+        sprintf(slpoorout, SLPOORSEEN, mask, dur);
+        tmp = slpoorout;
         seen_reply = nmalloc(strlen(tmp) + 1);
         strcpy(seen_reply, tmp);
         end_seentime_calc();
