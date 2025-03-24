@@ -1,6 +1,18 @@
 Changes in gseen.mod: (since v1.0.0)
 --------------------
 
+1.3.3
+- updated change logs + pushed new version
+
+1.3.3rc1
+- minor bug fixes
+
+1.3.2 
+- minor bug fixes
+
+1.3.1 
+- minor bug fixes
+
 1.3.1rc1 (2024-05-10)
 - fixed segfault issues after working on the code
 - converted german to the new language system
