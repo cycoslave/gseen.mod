@@ -18,8 +18,8 @@
 
 #define MAKING_GSEEN
 #define MODULE_NAME "gseen"
-#define MODULE_VERSION "1.3.3"
-#define MODULE_NUMVERSION 10303
+#define MODULE_VERSION "1.3.4"
+#define MODULE_NUMVERSION 10304
 #include "../module.h"
 #include "../irc.mod/irc.h"
 #include "../server.mod/server.h"

@@ -11,6 +11,8 @@ doofus:
 clean:
 	@rm -f *.o *.$(MOD_EXT) *~
 
+distclean: clean
+
 static: ../gseen.o
 
 modules: ../../../gseen.$(MOD_EXT)

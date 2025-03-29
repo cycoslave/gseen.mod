@@ -1,16 +1,20 @@
 Changes in gseen.mod: (since v1.0.0)
 --------------------
 
-1.3.3
+1.3.4 (2025-03-29)
+- added make distclean to make the module consistant avec eggdrop's modules
+
+1.3.3 (2025-03-23)
 - updated change logs + pushed new version
+- bug fixed that had been tested for closed to 1 year
 
-1.3.3rc1
+1.3.3rc1 (2024-07-31)
 - minor bug fixes
 
-1.3.2 
+1.3.2 (2024-07-10)
 - minor bug fixes
 
-1.3.1 
+1.3.1 (2024-06-09)
 - minor bug fixes
 
 1.3.1rc1 (2024-05-10)
